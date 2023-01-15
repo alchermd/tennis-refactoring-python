@@ -17,17 +17,17 @@ def get_score_name(score: int) -> str:
 
 class TennisGame1:
 
-    def __init__(self, player1Name, player2Name):
-        self.player1 = Player(player1Name)
-        self.player2 = Player(player2Name)
+    def __init__(self, player1_name: str, player2_name: str):
+        self.player1 = Player(player1_name)
+        self.player2 = Player(player2_name)
 
-    def won_point(self, playerName):
-        if playerName == self.player1.name:
+    def won_point(self, player_name):
+        if player_name == self.player1.name:
             self.player1.points += 1
         else:
             self.player2.points += 1
 
-    def score(self):
+    def score(self) -> str:
         if self.player1.points == self.player2.points:
             return self.get_drawn_score_name()
         elif self.player1.points >= 4 or self.player2.points >= 4:
@@ -40,7 +40,7 @@ class TennisGame1:
             0: "Love-All",
             1: "Fifteen-All",
             2: "Thirty-All",
-        }.get(self.player2.points, "Deuce")
+        }.get(self.player1.points, "Deuce")
 
     def get_advantage_score_name(self):
         score_difference = self.player1.points - self.player2.points
